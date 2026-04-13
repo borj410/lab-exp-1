@@ -5,81 +5,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>饗受煎餅 | 專業烘焙食譜</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
+    <header class="site-header">
         <nav class="container">
-            <div class="logo">饗受<span>煎餅</span></div>
+            <a class="logo" href="#home" aria-label="回到首頁">饗受<span>煎餅</span></a>
             <ul>
-                <li><a href="#">首頁</a></li>
-                <li><a href="#">食譜分類</a></li>
-                <li><a href="#">烘焙技巧</a></li>
-                <li><a href="#" class="btn-nav">訂閱我們</a></li>
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#categories">食譜分類</a></li>
+                <li><a href="#tips">烘焙技巧</a></li>
+                <li><a href="#subscribe" class="btn-nav">訂閱我們</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>完美的黃金煎餅</h1>
-            <p>掌握火候與比例，在家也能做出如雲朵般蓬鬆的質感。</p>
-            <a href="#recipe" class="btn-main">立即開始製作</a>
+    <section class="hero" id="home">
+        <div class="container hero-layout">
+            <div class="hero-content">
+                <span class="eyebrow">早餐靈感</span>
+                <h1>完美的黃金煎餅</h1>
+                <p>掌握火候與比例，在家也能做出如雲朵般蓬鬆的質感。從材料、步驟到烘焙技巧，這一頁把一份好煎餅需要的一切都整理好了。</p>
+                <div class="hero-actions">
+                    <a href="#recipe" class="btn-main">立即開始製作</a>
+                    <a href="#tips" class="btn-secondary">先看技巧</a>
+                </div>
+                <div class="hero-stats" aria-label="食譜重點數據">
+                    <div>
+                        <strong>10 分鐘</strong>
+                        <span>準備時間</span>
+                    </div>
+                    <div>
+                        <strong>15 分鐘</strong>
+                        <span>烹飪時間</span>
+                    </div>
+                    <div>
+                        <strong>2-3 人份</strong>
+                        <span>建議份量</span>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="hero-card" aria-label="今日推薦">
+                <span class="card-label">今日推薦</span>
+                <h2>雲朵厚煎餅</h2>
+                <p>外層微焦、內部柔軟，搭配蜂蜜、奶油或水果都很合適。</p>
+                <ul>
+                    <li>口感：鬆軟濕潤</li>
+                    <li>風味：奶香濃郁</li>
+                    <li>難度：初學者友善</li>
+                </ul>
+            </aside>
         </div>
     </section>
 
-    <main class="container" id="recipe">
-        <section class="recipe-header">
-            <span class="badge">經典熱銷</span>
-            <h2>美式經典鬆餅食譜</h2>
-            <div class="meta">
-                <span>⏱ 準備時間：10 分鐘</span>
-                <span>🔥 烹飪時間：15 分鐘</span>
-                <span>🍴 份量：2-3 人份</span>
+    <main>
+        <section class="container recipe-section" id="recipe">
+            <section class="recipe-header">
+                <span class="badge">經典熱銷</span>
+                <h2>美式經典鬆餅食譜</h2>
+                <div class="meta">
+                    <span>⏱ 準備時間：10 分鐘</span>
+                    <span>🔥 烹飪時間：15 分鐘</span>
+                    <span>🍴 份量：2-3 人份</span>
+                </div>
+            </section>
+
+            <div class="recipe-grid">
+                <article class="ingredients">
+                    <h3>所需食材</h3>
+                    <ul>
+                        <li><strong>中筋麵粉：</strong> 200g</li>
+                        <li><strong>無鋁泡打粉：</strong> 10g</li>
+                        <li><strong>細砂糖：</strong> 30g</li>
+                        <li><strong>鮮奶：</strong> 240ml</li>
+                        <li><strong>全蛋：</strong> 1 顆</li>
+                        <li><strong>無鹽奶油：</strong> 30g (融化)</li>
+                        <li><strong>香草精：</strong> 少許</li>
+                    </ul>
+                </article>
+
+                <article class="steps">
+                    <h3>製作步驟</h3>
+                    <ol>
+                        <li>
+                            <span class="step-num">01</span>
+                            <p>將麵粉、泡打粉及糖混合過篩至大碗中。</p>
+                        </li>
+                        <li>
+                            <span class="step-num">02</span>
+                            <p>在另一個容器中打散雞蛋，加入鮮奶、融化的奶油及香草精攪拌均勻。</p>
+                        </li>
+                        <li>
+                            <span class="step-num">03</span>
+                            <p>將濕配料倒入乾粉中心，用刮刀輕輕拌勻，保留少量顆粒是蓬鬆的關鍵。</p>
+                        </li>
+                        <li>
+                            <span class="step-num">04</span>
+                            <p>中火預熱平底鍋，抹上一層薄薄的油。倒入適量麵糊，待表面冒出氣泡且邊緣乾燥後翻面。</p>
+                        </li>
+                        <li>
+                            <span class="step-num">05</span>
+                            <p>背面再煎約 1 分鐘至金黃色即可出鍋。</p>
+                        </li>
+                    </ol>
+                </article>
             </div>
         </section>
 
-        <div class="recipe-grid">
-            <article class="ingredients">
-                <h3>所需食材</h3>
-                <ul>
-                    <li><strong>中筋麵粉：</strong> 200g</li>
-                    <li><strong>無鋁泡打粉：</strong> 10g</li>
-                    <li><strong>細砂糖：</strong> 30g</li>
-                    <li><strong>鮮奶：</strong> 240ml</li>
-                    <li><strong>全蛋：</strong> 1 顆</li>
-                    <li><strong>無鹽奶油：</strong> 30g (融化)</li>
-                    <li><strong>香草精：</strong> 少許</li>
-                </ul>
-            </article>
+        <section class="container category-section" id="categories">
+            <div class="section-heading">
+                <span class="badge">食譜分類</span>
+                <h2>從經典到創意，找到你的口味</h2>
+                <p>導航中的分類不再只是佔位符。這裡整理了三種最適合延伸的煎餅方向，未來也能直接擴成獨立頁面。</p>
+            </div>
 
-            <article class="steps">
-                <h3>製作步驟</h3>
-                <ol>
-                    <li>
-                        <span class="step-num">01</span>
-                        <p>將麵粉、泡打粉及糖混合過篩至大碗中。</p>
-                    </li>
-                    <li>
-                        <span class="step-num">02</span>
-                        <p>在另一個容器中打散雞蛋，加入鮮奶、融化的奶油及香草精攪拌均勻。</p>
-                    </li>
-                    <li>
-                        <span class="step-num">03</span>
-                        <p>將濕配料倒入乾粉中心，用刮刀輕輕拌勻（切勿過度攪拌，留有小顆粒是蓬鬆的關鍵）。</p>
-                    </li>
-                    <li>
-                        <span class="step-num">04</span>
-                        <p>中火預熱平底鍋，抹上一層薄薄的油。倒入適量麵糊，待表面冒出氣泡且邊緣乾燥後翻面。</p>
-                    </li>
-                    <li>
-                        <span class="step-num">05</span>
-                        <p>背面再煎約 1 分鐘至金黃色即可出鍋。</p>
-                    </li>
-                </ol>
-            </article>
-        </div>
+            <div class="category-grid">
+                <article class="category-card accent-peach">
+                    <h3>經典原味</h3>
+                    <p>奶油、蜂蜜與楓糖最能保留煎餅本身的香氣。</p>
+                    <span>適合每日早餐</span>
+                </article>
+                <article class="category-card accent-berry">
+                    <h3>水果風味</h3>
+                    <p>加入香蕉、藍莓或蘋果丁，增加層次與自然甜度。</p>
+                    <span>適合週末早午餐</span>
+                </article>
+                <article class="category-card accent-sun">
+                    <h3>鹹香系</h3>
+                    <p>搭配起司、培根或香草奶油醬，讓煎餅也能成為正餐。</p>
+                    <span>適合創意擺盤</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="container tips-section" id="tips">
+            <div class="section-heading">
+                <span class="badge">烘焙技巧</span>
+                <h2>把失敗率降到最低的三個重點</h2>
+            </div>
+
+            <div class="tips-grid">
+                <article class="tip-card">
+                    <span class="tip-index">01</span>
+                    <h3>不要過度攪拌</h3>
+                    <p>麵糊拌到看不見乾粉即可，少量粉粒會在加熱後自然消失。</p>
+                </article>
+                <article class="tip-card">
+                    <span class="tip-index">02</span>
+                    <h3>控制鍋溫</h3>
+                    <p>先用中火預熱，再轉小中火煎製，避免外焦內生。</p>
+                </article>
+                <article class="tip-card">
+                    <span class="tip-index">03</span>
+                    <h3>翻面只做一次</h3>
+                    <p>等氣泡穩定冒出再翻面，避免反覆翻動讓組織塌陷。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="container subscribe-section" id="subscribe">
+            <div class="subscribe-panel">
+                <div>
+                    <span class="badge">訂閱我們</span>
+                    <h2>收到更多早餐靈感與新食譜</h2>
+                    <p>每週整理一份簡潔不打擾的烘焙靈感，包含新口味、配料搭配與實用技巧。</p>
+                </div>
+
+                <form class="subscribe-form" action="#" method="post">
+                    <label for="email">電子郵件</label>
+                    <input id="email" name="email" type="email" placeholder="name@example.com" required>
+                    <button type="submit" class="btn-main">訂閱電子報</button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <footer>
