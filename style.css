@@ -1,11 +1,17 @@
 /* 全域設定 */
 :root {
-    --primary-orange: #FF8C00;
-    --dark-orange: #E67E22;
-    --light-cream: #FFFBF2;
-    --text-dark: #2C3E50;
-    --text-gray: #7F8C8D;
-    --white: #FFFFFF;
+    --primary-orange: #f08a24;
+    --primary-orange-deep: #d96c10;
+    --accent-berry: #d94f70;
+    --accent-sun: #f4b942;
+    --light-cream: #fff8ef;
+    --surface: rgba(255, 255, 255, 0.82);
+    --surface-strong: #ffffff;
+    --text-dark: #243447;
+    --text-gray: #6f7d8d;
+    --line-soft: rgba(36, 52, 71, 0.12);
+    --shadow-soft: 0 18px 40px rgba(36, 52, 71, 0.12);
+    --white: #ffffff;
 }
 
 * {
@@ -14,24 +20,40 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Noto Sans TC', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background-color: var(--light-cream);
+    background:
+        radial-gradient(circle at top left, rgba(240, 138, 36, 0.14), transparent 34%),
+        radial-gradient(circle at top right, rgba(217, 79, 112, 0.12), transparent 30%),
+        linear-gradient(180deg, #fffaf3 0%, #fff7ed 55%, #fffdf9 100%);
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }
 
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
 }
 
-/* 導航欄 */
-header {
-    background-color: var(--white);
-    padding: 20px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+section {
+    scroll-margin-top: 100px;
+}
+
+.site-header {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(18px);
+    padding: 18px 0;
+    box-shadow: 0 1px 0 rgba(36, 52, 71, 0.06);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -41,12 +63,18 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 18px;
 }
 
 .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 900;
     color: var(--text-dark);
+    letter-spacing: 0.04em;
 }
 
 .logo span {
@@ -57,10 +85,12 @@ nav ul {
     display: flex;
     list-style: none;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 nav ul li {
-    margin-left: 30px;
+    margin-left: 24px;
 }
 
 nav ul li a {
@@ -74,105 +104,278 @@ nav ul li a:hover {
     color: var(--primary-orange);
 }
 
-.btn-nav {
-    background-color: var(--primary-orange);
-    color: white !important;
-    padding: 8px 20px;
-    border-radius: 25px;
+nav ul li a:focus-visible,
+.btn-main:focus-visible,
+.btn-secondary:focus-visible,
+.subscribe-form input:focus-visible {
+    outline: 3px solid rgba(240, 138, 36, 0.28);
+    outline-offset: 3px;
 }
 
-/* Hero 區域 */
+.btn-nav {
+    background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-deep));
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 999px;
+    box-shadow: 0 10px 22px rgba(240, 138, 36, 0.28);
+}
+
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('https://images.squarespace-cdn.com/content/v1/5eb43938f468c330e7d8d665/c442ea77-6d7e-4883-80f5-f4bbbbc6393f/Cottage+cheese+pancake+with+butter+and+syrup+photo+credit+Rebecca+Frey.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 500px;
-    display: flex;
+    padding: 64px 0 44px;
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+    gap: 28px;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--white);
-    margin-bottom: 50px;
+}
+
+.hero-content {
+    padding: 8px 0;
+}
+
+.eyebrow,
+.card-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(240, 138, 36, 0.14);
+    color: var(--primary-orange-deep);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
+    margin-top: 18px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2.6rem, 5vw, 5rem);
+    line-height: 1.08;
+    letter-spacing: 0.02em;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+    max-width: 46rem;
+    margin: 20px 0 30px;
+    font-size: 1.08rem;
+    color: var(--text-gray);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.btn-main,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 26px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 999px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .btn-main {
-    display: inline-block;
-    padding: 15px 40px;
-    background-color: var(--primary-orange);
+    background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-deep));
     color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
+    box-shadow: 0 12px 26px rgba(240, 138, 36, 0.22);
 }
 
 .btn-main:hover {
-    background-color: var(--dark-orange);
+    background: linear-gradient(135deg, var(--primary-orange-deep), #c86008);
     transform: translateY(-3px);
+    box-shadow: 0 16px 30px rgba(240, 138, 36, 0.28);
 }
 
-/* 食譜內容區 */
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.65);
+    color: var(--text-dark);
+    border: 1px solid var(--line-soft);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-soft);
+}
+
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.hero-stats div,
+.hero-card,
+.ingredients,
+.steps,
+.category-card,
+.tip-card,
+.subscribe-panel {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(16px);
+}
+
+.hero-stats div {
+    border-radius: 18px;
+    padding: 18px 16px;
+}
+
+.hero-stats strong {
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+}
+
+.hero-stats span {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+.hero-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    padding: 28px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.72)),
+        url('https://images.squarespace-cdn.com/content/v1/5eb43938f468c330e7d8d665/c442ea77-6d7e-4883-80f5-f4bbbbc6393f/Cottage+cheese+pancake+with+butter+and+syrup+photo+credit+Rebecca+Frey.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.hero-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(36, 52, 71, 0.02), rgba(36, 52, 71, 0.54));
+}
+
+.hero-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-card h2 {
+    margin: 16px 0 10px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2rem;
+    color: var(--text-dark);
+}
+
+.hero-card p,
+.hero-card li {
+    color: var(--text-dark);
+}
+
+.hero-card ul {
+    list-style: none;
+    margin-top: 18px;
+}
+
+.hero-card li {
+    padding: 10px 0;
+    border-top: 1px solid rgba(36, 52, 71, 0.1);
+    font-weight: 500;
+}
+
+.recipe-section,
+.category-section,
+.tips-section,
+.subscribe-section {
+    padding-top: 26px;
+    padding-bottom: 26px;
+}
+
 .recipe-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin: 0 auto 34px;
+    max-width: 760px;
 }
 
-.badge {
-    background-color: #FFE4B5;
-    color: var(--dark-orange);
-    padding: 5px 15px;
-    border-radius: 20px;
+.recipe-header h2,
+.section-heading h2,
+.subscribe-panel h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    line-height: 1.15;
+    margin: 16px 0;
+}
+
+.section-heading {
+    max-width: 760px;
+    margin-bottom: 28px;
+}
+
+.recipe-header .badge,
+.section-heading .badge,
+.subscribe-panel .badge {
+    display: inline-flex;
+    background: rgba(240, 138, 36, 0.12);
+    color: var(--primary-orange-deep);
+    padding: 7px 16px;
+    border-radius: 999px;
     font-size: 0.9rem;
-    font-weight: bold;
-}
-
-.recipe-header h2 {
-    font-size: 2.5rem;
-    margin: 15px 0;
+    font-weight: 800;
 }
 
 .meta {
     color: var(--text-gray);
-    font-size: 1rem;
+    font-size: 0.98rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 18px;
 }
 
 .meta span {
-    margin: 0 15px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid var(--line-soft);
 }
 
-/* 網格布局 */
 .recipe-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-    margin-bottom: 80px;
-}
-
-.ingredients {
-    background-color: var(--white);
-    padding: 30px;
-    border-radius: 15px;
-    border-left: 5px solid var(--primary-orange);
-    height: fit-content;
-}
-
-.ingredients h3, .steps h3 {
+    grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.4fr);
+    gap: 24px;
     margin-bottom: 20px;
-    font-size: 1.5rem;
-    border-bottom: 2px solid #EEE;
-    padding-bottom: 10px;
+}
+
+.ingredients,
+.steps,
+.category-card,
+.tip-card,
+.subscribe-panel {
+    border-radius: 24px;
+}
+
+.ingredients,
+.steps {
+    padding: 28px;
+}
+
+.ingredients h3,
+.steps h3 {
+    margin-bottom: 20px;
+    font-size: 1.35rem;
+    border-bottom: 1px solid var(--line-soft);
+    padding-bottom: 12px;
 }
 
 .ingredients ul {
@@ -180,49 +383,249 @@ nav ul li a:hover {
 }
 
 .ingredients li {
-    padding: 10px 0;
-    border-bottom: 1px dashed #EEE;
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(36, 52, 71, 0.12);
+}
+
+.ingredients li:last-child {
+    border-bottom: 0;
+}
+
+.steps ol {
+    list-style: none;
 }
 
 .steps li {
     display: flex;
-    margin-bottom: 25px;
+    gap: 16px;
+    margin-bottom: 22px;
     align-items: flex-start;
 }
 
+.steps li:last-child {
+    margin-bottom: 0;
+}
+
 .step-num {
-    background-color: var(--primary-orange);
+    background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-deep));
     color: white;
-    font-weight: bold;
-    min-width: 40px;
-    height: 40px;
-    display: flex;
+    font-weight: 800;
+    min-width: 42px;
+    height: 42px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    margin-right: 20px;
+    box-shadow: 0 10px 18px rgba(240, 138, 36, 0.24);
 }
 
-/* 頁腳 */
+.category-grid,
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.category-card,
+.tip-card {
+    padding: 24px;
+}
+
+.category-card h3,
+.tip-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.category-card p,
+.tip-card p,
+.section-heading p,
+.subscribe-panel p {
+    color: var(--text-gray);
+}
+
+.category-card span {
+    display: inline-flex;
+    margin-top: 16px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(36, 52, 71, 0.04);
+    color: var(--text-dark);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.accent-peach {
+    border-top: 4px solid var(--primary-orange);
+}
+
+.accent-berry {
+    border-top: 4px solid var(--accent-berry);
+}
+
+.accent-sun {
+    border-top: 4px solid var(--accent-sun);
+}
+
+.tip-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(240, 138, 36, 0.14);
+    color: var(--primary-orange-deep);
+    font-weight: 900;
+    margin-bottom: 18px;
+}
+
+.subscribe-panel {
+    display: flex;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 28px;
+    background:
+        linear-gradient(135deg, rgba(255, 248, 239, 0.92), rgba(255, 255, 255, 0.86)),
+        radial-gradient(circle at top right, rgba(240, 138, 36, 0.16), transparent 38%);
+}
+
+.subscribe-form {
+    display: grid;
+    gap: 12px;
+    width: min(100%, 360px);
+    align-self: center;
+}
+
+.subscribe-form label {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.subscribe-form input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(36, 52, 71, 0.14);
+    font: inherit;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text-dark);
+}
+
+.subscribe-form input::placeholder {
+    color: #93a1b3;
+}
+
 footer {
-    background-color: var(--text-dark);
+    margin-top: 40px;
+    background: linear-gradient(135deg, #243447, #17202c);
     color: white;
     text-align: center;
-    padding: 40px 0;
-    margin-top: 50px;
+    padding: 34px 0;
 }
 
-/* 響應式調整 */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 18px;
+    }
+
+    .site-header {
+        padding: 14px 0;
+    }
+
+    nav {
+        gap: 14px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    nav ul {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+    }
+
+    nav ul li {
+        margin-left: 0;
+    }
+
+    .hero {
+        padding: 28px 0 18px;
+    }
+
+    .hero-layout,
     .recipe-grid {
         grid-template-columns: 1fr;
     }
-    
-    .hero h1 {
-        font-size: 2.5rem;
+
+    .hero-stats,
+    .category-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
     }
-    
+
+    .hero-card {
+        min-height: 320px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .btn-main,
+    .btn-secondary {
+        width: 100%;
+    }
+
+    .subscribe-panel {
+        flex-direction: column;
+    }
+
+    .subscribe-form {
+        width: 100%;
+    }
+
+    .recipe-header,
+    .section-heading {
+        text-align: left;
+    }
+
+    .meta {
+        justify-content: flex-start;
+    }
+
+    .steps li {
+        gap: 12px;
+    }
+
+    .hero h1 {
+        letter-spacing: 0;
+    }
+}
+
+@media (max-width: 520px) {
+    .logo {
+        font-size: 1.25rem;
+    }
+
     nav ul {
-        display: none; /* 簡化手機版，可改為漢堡選單 */
+        gap: 8px 12px;
+    }
+
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .ingredients,
+    .steps,
+    .category-card,
+    .tip-card,
+    .subscribe-panel {
+        padding: 20px;
+    }
+
+    .hero-card {
+        padding: 20px;
     }
 }
