@@ -1,0 +1,71 @@
+/* Print-specific styles for recipe pages */
+@media print {
+    :root {
+        --primary-orange: #000;
+        --text-dark: #000;
+    }
+
+    html, body {
+        background: #fff !important;
+        color: #000 !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    /* Hide UI elements not needed in print */
+    header, nav, .site-header, footer, .fab, .btn-main, .btn-secondary, .subscribe-panel, .hero, .hero-card {
+        display: none !important;
+    }
+
+    /* Make container full width for print */
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Recipe content should be readable */
+    h1, h2, h3, h4 {
+        color: #000 !important;
+        page-break-after: avoid;
+    }
+
+    p, li, span {
+        color: #000 !important;
+        font-size: 12pt;
+    }
+
+    /* Avoid breaking inside ingredient lists and steps */
+    .ingredients, .steps, .category-card, .tip-card, .recipe-grid, .recipe-section {
+        box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+        -webkit-box-shadow: none !important;
+        page-break-inside: avoid !important;
+    }
+
+    /* Make sure each main recipe starts on a new printed page */
+    .print-page-break {
+        page-break-before: always;
+    }
+
+    /* Ensure buttons are hidden on print */
+    .btn-print, .btn-nav, a.btn-main, a.btn-secondary {
+        display: none !important;
+    }
+
+    /* Improve spacing for print */
+    .ingredients, .steps {
+        padding: 0 !important;
+        margin-bottom: 12pt !important;
+    }
+
+    /* Keep list items together */
+    ol, ul {
+        page-break-inside: avoid;
+    }
+}
+
+/* For screen, optional small tweaks for print button if included */
+@media screen {
+    .print-only { display: none; }
+}
